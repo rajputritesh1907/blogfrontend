@@ -30,7 +30,7 @@ export default function Home() {
     const fetchFeaturedPosts = async () => {
       try {
         setFeaturedLoading(true);
-        const response = await fetch('http://localhost:5000/api/posts/featured?limit=3');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/featured?limit=3`);
 
         if (response.ok) {
           const posts = await response.json();
@@ -55,7 +55,7 @@ export default function Home() {
     const fetchTrendingPosts = async () => {
       try {
         setTrendingLoading(true);
-        const response = await fetch('http://localhost:5000/api/posts/trending?limit=4');
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/trending?limit=4`);
 
         if (response.ok) {
           const posts = await response.json();
@@ -185,7 +185,7 @@ export default function Home() {
               }}
             />
 
-              {/* Client-only particle system */}
+            {/* Client-only particle system */}
             <ParticleSystem />
           </div>
         </div>
@@ -638,7 +638,7 @@ export default function Home() {
             )}
           </motion.div>
         )}
-      </section> 
+      </section>
 
       {/* Trending Posts */}
       <section className="space-y-6 md:space-y-8 lg:space-y-10" aria-labelledby="trending-stories-heading">

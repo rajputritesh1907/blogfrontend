@@ -42,7 +42,7 @@ export default function BlogPost() {
 
     const fetchComments = useCallback(async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/comments/post/${id}`);
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/comments/post/${id}`);
             if (response.ok) {
                 const commentsData = await response.json();
                 setComments(commentsData);
@@ -60,14 +60,14 @@ export default function BlogPost() {
 
             try {
                 setLoading(true);
-                const response = await fetch(`http://localhost:5000/api/posts/${id}`);
+                const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/${id}`);
 
-                    if (response.ok) {
-                        const postData = await response.json();
-                        setPost(postData);
-                        setLikesCount(postData.likes);
-                        setLiked(postData.userHasLiked || false);
-                    } else if (response.status === 404) {
+                if (response.ok) {
+                    const postData = await response.json();
+                    setPost(postData);
+                    setLikesCount(postData.likes);
+                    setLiked(postData.userHasLiked || false);
+                } else if (response.status === 404) {
                     setError('Post not found');
                 } else {
                     setError('Failed to load post');
@@ -91,7 +91,7 @@ export default function BlogPost() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/posts/${id}/like`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/${id}/like`, {
                 method: 'PUT',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -152,7 +152,7 @@ export default function BlogPost() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/comments/post/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/comments/post/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -189,7 +189,7 @@ export default function BlogPost() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/comments/post/${id}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/comments/post/${id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -227,7 +227,7 @@ export default function BlogPost() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/comments/${commentId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/comments/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`

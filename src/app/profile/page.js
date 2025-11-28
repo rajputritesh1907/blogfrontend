@@ -77,7 +77,7 @@ export default function Profile() {
                     }
 
                     console.log('Making API call to fetch posts...');
-                    const response = await fetch(`http://localhost:5000/api/posts/user/${user._id}`, {
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/user/${user._id}`, {
                         method: 'GET',
                         headers: {
                             'Authorization': `Bearer ${token}`,
@@ -172,7 +172,7 @@ export default function Profile() {
                 avatar: formData.avatarPreview // base64 string
             };
 
-            const response = await fetch('http://localhost:5000/api/posts/profile', {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/profile`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ export default function Profile() {
 
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/posts/${postId}`, {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/${postId}`, {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`
