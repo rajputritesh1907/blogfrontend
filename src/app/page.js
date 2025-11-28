@@ -10,6 +10,7 @@ import ArticleSkeleton from '../components/ArticleSkeleton';
 import { useAuth } from '../context/AuthContext';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import api from '../lib/api';
 
 // Client-only particle component to avoid hydration mismatches
 const ParticleSystem = dynamic(() => import('../components/ParticleSystem'), {
@@ -30,11 +31,10 @@ export default function Home() {
     const fetchFeaturedPosts = async () => {
       try {
         setFeaturedLoading(true);
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/featured?limit=3`);
+        const response = await api.get('/posts/featured?limit=3');
 
-        if (response.ok) {
-          const posts = await response.json();
-          setFeaturedPosts(posts);
+        if (response.status === 200) {
+          setFeaturedPosts(response.data);
         } else {
           console.error('Failed to fetch featured posts');
           setFeaturedPosts([]);
@@ -55,11 +55,10 @@ export default function Home() {
     const fetchTrendingPosts = async () => {
       try {
         setTrendingLoading(true);
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/posts/trending?limit=4`);
+        const response = await api.get('/posts/trending?limit=4');
 
-        if (response.ok) {
-          const posts = await response.json();
-          setTrendingPosts(posts);
+        if (response.status === 200) {
+          setTrendingPosts(response.data);
         } else {
           console.error('Failed to fetch trending posts');
           // Fallback to empty array
