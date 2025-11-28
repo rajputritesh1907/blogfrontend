@@ -309,19 +309,11 @@ export default function Home() {
               >
                 Transform your thoughts into
                 <motion.span
-                  className="font-semibold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
-                  animate={{
-                    backgroundPosition: ['0% 50%', '100% 50%', '0% 50%']
-                  }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                  className="font-semibold text-black"
                 >
                   {" compelling stories"}
                 </motion.span>
-                . Connect with readers worldwide, build your audience, and turn your passion for writing into something
+                . Connect with readers worldwide, build your audience, and turn your passion for writing into something {" "}
                 <motion.span
                   className="font-semibold text-foreground"
                   animate={{
@@ -759,9 +751,9 @@ export default function Home() {
               description: "Get discovered by our smart algorithm that surfaces the best content to the right audience."
             },
             {
-              icon: Sparkles,
-              title: "AI-Powered",
-              description: "Smart suggestions, automated formatting, and insights to help you write better content."
+              icon: Target,
+              title: "SEO Optimized",
+              description: "Automatic optimization to help your stories reach a wider audience on search engines."
             },
             {
               icon: Heart,

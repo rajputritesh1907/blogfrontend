@@ -315,7 +315,7 @@ export default function BlogPost() {
             </div>
 
             {/* Article */}
-            <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <article className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 {/* Cover Image */}
                 {post.coverImage && (
                     <div className="mb-8">
@@ -408,7 +408,7 @@ export default function BlogPost() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.4 }}
-                    className="mt-12 pt-8 border-t"
+                    className="mt-6 pt-6 border-t"
                 >
                     <div className="flex items-center justify-between">
                         <div className="flex items-center space-x-4">
@@ -440,7 +440,7 @@ export default function BlogPost() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.6 }}
-                    className="mt-12 p-6 bg-muted/30 rounded-lg"
+                    className="mt-6 p-6 bg-muted/30 rounded-lg"
                 >
                     <div className="flex items-start space-x-4">
                         {post.author.avatar_url ? (
@@ -470,7 +470,7 @@ export default function BlogPost() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.8 }}
-                    className="mt-16 pt-8 border-t"
+                    className="mt-8 pt-6 border-t"
                 >
                     <div className="flex items-center mb-6">
                         <MessageCircle className="w-6 h-6 mr-2" />

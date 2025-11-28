@@ -45,6 +45,9 @@ export default function Navbar() {
 
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-4">
+                        <Link href="/blogs">
+                            <Button variant="ghost">Blogs</Button>
+                        </Link>
                         <ThemeToggle />
                         {loading ? (
                             <div className="w-8 h-8 rounded-full bg-muted flex items-center justify-center">
@@ -143,6 +146,11 @@ export default function Navbar() {
                                 mobile={true}
                                 onClick={() => setIsMenuOpen(false)}
                             />
+                            <Link href="/blogs" onClick={() => setIsMenuOpen(false)}>
+                                <Button variant="ghost" className="w-full justify-start h-12">
+                                    Blogs
+                                </Button>
+                            </Link>
                             {loading ? (
                                 <div className="flex items-center space-x-3 px-3 py-3 mb-4 bg-muted/50 rounded-lg">
                                     <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
